@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Alert</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #af4c4c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function fetchMessage() {
+            fetch('/get_message')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('message').innerText = data.message;
+                });
+        }
+
+        setInterval(fetchMessage, 500); // Fetch message every 0.5 seconds
+    </script>
+</head>
+<body onload="fetchMessage()">
+    <h1 id="message">{{ message }}</h1>
+    <form action="{{ url_for('reset') }}" method="post">
+        <button type="submit">Reset cat alert</button>
+    </form>
+</body>
+</html>

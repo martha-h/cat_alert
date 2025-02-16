@@ -1,0 +1,6 @@
+.vscode
+src/__pycache__
+venv*/
+models*/
+videos*/
+data*/
