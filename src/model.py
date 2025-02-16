@@ -26,7 +26,8 @@ class Model:
         confidence threshold for preciction filter
     res : list | default = None
         predcition result
-
+    detection_count: int
+        counter for detections
     """
      
     def __init__(self, model_name, class_id, confidence_threshold):
