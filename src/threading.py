@@ -38,7 +38,7 @@ def create_threads():
                                      CLASS_ID_LIST,
                                      CONFIDENCE_THRESHOLD,
                                      THREAD_INTERVAL,
-                                     ANNOTATES_FRAMES_DIR))
+                                     ANNOTATED_FRAMES_DIR))
     threads.append(predict)
     
     update = threading.Thread(name='alert-thread',
