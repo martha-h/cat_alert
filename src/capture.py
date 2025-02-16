@@ -1,10 +1,13 @@
+# Stdlib imports
+import time
+
 # External imports
 import cv2
 
 # Local imports
 from src import log
 
-def capture_thread(stop_event, queue, frame_interval, source):
+def capture_thread(stop_event, queue, frame_interval, source, max_time):
     # Initialize a video capture object for a given video source
     cap = cv2.VideoCapture(source) 
 
@@ -17,6 +20,9 @@ def capture_thread(stop_event, queue, frame_interval, source):
     # Initialize frame count
     current_frame = 0
 
+    # Set start time
+    start_time = time.time()
+
     # Checking capture object validity
     if not cap.isOpened():
         log.warning("Could not open capture object, setting stop event.")
@@ -24,6 +30,14 @@ def capture_thread(stop_event, queue, frame_interval, source):
     else:
         # Start capture frames loop
         while not stop_event.is_set():
+
+            # Check if maximum time reached
+            elapsed_time = time.time() - start_time 
+            if elapsed_time >= max_time:
+                log.warning(f"Max time {max_time} [sec] exceeded, setting stop event.")
+                stop_event.set()
+                break
+
             # Read frame
             ret, frame = cap.read()
             if not ret:

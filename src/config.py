@@ -7,4 +7,5 @@ ALERT                   = {'msg': 'No alert.'}              # Alert message
 HOST_IP                 = '127.0.0.1'                       # Host IP address
 HOST_PORT               = 5000                              # Host port
 THREAD_INTERVAL         = 0.1                               # Thread sleep interval [sec]
-ANNOTATED_FRAMES_DIR    = 'data'                            # Directory for annotated frames                 
+ANNOTATED_FRAMES_DIR    = 'data'                            # Directory for annotated frames
+MAX_RUNNING_TIME        = 60                                # Maximum allowed running time for thread.                  

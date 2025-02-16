@@ -25,7 +25,8 @@ def create_threads():
                                args=(stop_event,
                                      image_queue,
                                      FRAME_TIME_INTERVAL,
-                                     CAPTURE_SOURCE))
+                                     CAPTURE_SOURCE,
+                                     MAX_RUNNING_TIME))
     threads.append(capture)
     
     # Initialize prediction thread 
